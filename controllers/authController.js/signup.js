@@ -1,6 +1,7 @@
 import User from "../../schema/User.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { createCookieOptions } from "../../utils.js";
 dotenv.config();
 export default async function Signup(req, res) {
   try {
@@ -26,11 +27,7 @@ export default async function Signup(req, res) {
     });
 
     // Set the token in a cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
-    });
+    res.cookie("token", token, createCookieOptions);
 
     // Send a success response with the user details (excluding password)
     res.status(201).send({

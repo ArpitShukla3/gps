@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import User from "../../schema/User.js";
 import jwt from "jsonwebtoken";
+import { createCookieOptions } from "../../utils.js";
 export default async function Signin(req, res) {
   try {
     const { email, password } = req.body;
@@ -21,12 +22,7 @@ export default async function Signin(req, res) {
       expiresIn: "1d",
     });
     // Set the token in a cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
-      sameSite: 'Lax',
-    });
+    res.cookie("token", token,createCookieOptions);
 
     // Send a success response with the user details (excluding password)
     res.status(201).send({
