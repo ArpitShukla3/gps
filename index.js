@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 // app.use(cors(corsOptions));
 app.use(cors({
-  origin: [ 'http://localhost:5173', 'https://ruralsync-service-provider.vercel.app'],
+  origin: [ 'http://localhost:5173', 'https://gps-front.onrender.com'],
   credentials: true
 }))
 app.use(express.json());
