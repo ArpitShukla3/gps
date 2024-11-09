@@ -16,18 +16,8 @@ const port = process.env.PORT;
 
 // Create HTTP server
 const server = http.createServer(app);
-
-// Configure CORS
-// const corsOptions = {
-//   origin: "http://localhost:5173",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-// };
-
-// app.use(cors(corsOptions));
 app.use(cors({
-  origin: [ 'http://localhost:5173', 'https://gps-front-1.onrender.com'],
+  origin: [ 'http://localhost:5173', 'https://gps-front-1.onrender.com',"http://192.168.137.140:5173"],
   credentials: true
 }))
 app.use(express.json());
@@ -55,7 +45,7 @@ app.get("/hello-world", (req, res) => {
 // Attach Socket.IO to the HTTP server
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://gps-front-1.onrender.com"],
+    origin: ["http://localhost:5173", "https://gps-front-1.onrender.com","http://192.168.137.140:5173"],
     credentials: true
   }
 });
