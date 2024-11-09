@@ -17,7 +17,8 @@ const port = process.env.PORT;
 // Create HTTP server
 const server = http.createServer(app);
 app.use(cors({
-  origin: [ 'http://localhost:5173', 'https://gps-front-1.onrender.com',"http://192.168.137.140:5173"],
+  origin: [ 'http://localhost:5173', 'https://gps-front-1.onrender.com',"https://4858-117-250-157-213.ngrok-free.app"],
+  //   addd your ip:5173 here for local testing
   credentials: true
 }))
 app.use(express.json());
@@ -45,24 +46,24 @@ app.get("/hello-world", (req, res) => {
 // Attach Socket.IO to the HTTP server
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://gps-front-1.onrender.com","http://192.168.137.140:5173"],
+    origin: ["http://localhost:5173", "https://gps-front-1.onrender.com","https://4858-117-250-157-213.ngrok-free.app"],
     credentials: true
   }
 });
-
+//  no slash
 app.use("/", authRouter);
 
 
 io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
+  // console.log("User connected:", socket.id);
 
   socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
+    // console.log("User disconnected:", socket.id);
   });
 
   socket.on("join room", (data) => {
     socket.join(data);
-    console.log("User joined room:", data);
+    // console.log("User joined room:", data);
 
     socket.on("location update", (payload) => {
       const rooms = payload.To;
@@ -75,11 +76,11 @@ io.on("connection", (socket) => {
 
 // Server cleanup function
 function cleanup() {
-  console.log("Cleaning up resources...");
+  // console.log("Cleaning up resources...");
 
   // Close the database connection
   mongoose.connection.close(false, () => {
-    console.log("MongoDB connection closed.");
+    // console.log("MongoDB connection closed.");
   });
 
   // Disconnect all connected sockets

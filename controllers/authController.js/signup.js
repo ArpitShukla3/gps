@@ -35,6 +35,7 @@ export default async function Signup(req, res) {
         id: user._id,
         name: user.name,
         email: user.email,
+        authToken: token,
       },
     });
   } catch (error) {

@@ -18,18 +18,16 @@ export default async function Signin(req, res) {
       return res.status(400).send({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    // const token = await jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    //   expiresIn: "1d",
+    // });
     // Set the token in a cookie
-    res.cookie("token", token,createCookieOptions);
-
-    // Send a success response with the user details (excluding password)
     res.status(201).send({
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
+        authToken: user._id,
       },
     });
   } catch (error) {
