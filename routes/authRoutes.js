@@ -9,8 +9,8 @@ import addTo from "../controllers/authController.js/addTo.js";
 import Signout from "../controllers/authController.js/signout.js";
 
 const authRouter = express.Router();
-authRouter.post("/auth/signup", Signup);
-authRouter.post("/auth/signin", Signin);
+authRouter.post("/signup", Signup);
+authRouter.post("/signin", Signin);
 authRouter.get("/search", authMiddleware, searchUsersByEmail);
 // authRouter.get("/search",searchUsersByEmail);
 authRouter.get("/fetch", authMiddleware, fetchUserDetails);

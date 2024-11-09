@@ -3,7 +3,7 @@ export default function Signout(req, res) {
         res.cookie("token", null, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Lax',
+            sameSite: 'None',
             expires: new Date(0),
         });
         res.status(200).send({ message: "Successfully signed out" });
