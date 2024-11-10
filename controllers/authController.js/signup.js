@@ -27,7 +27,7 @@ export default async function Signup(req, res) {
     });
 
     // Set the token in a cookie
-    res.cookie("token", token, createCookieOptions);
+    // res.cookie("token", token, createCookieOptions);
 
     // Send a success response with the user details (excluding password)
     res.status(201).send({
