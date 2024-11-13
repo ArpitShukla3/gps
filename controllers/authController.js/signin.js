@@ -31,6 +31,6 @@ export default async function Signin(req, res) {
       },
     });
   } catch (error) {
-    res.status(500).send({ error: "Internal server error", message: error.message });
+    res.status(400).send({ error: "Internal server error", message: error.message });
   }
 }

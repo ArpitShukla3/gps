@@ -39,7 +39,7 @@ export default async function Signup(req, res) {
     });
   } catch (error) {
     res
-      .status(500)
+      .status(400)
       .send({ error: "Internal server error", message: error.message });
   }
 }

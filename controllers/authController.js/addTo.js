@@ -32,7 +32,7 @@ const addTo = async (req, res) => {
     }
     res.status(200).send(user);
   } catch (error) {
-    res.status(500).send({ error: "Internal server error" });
+    res.status(400).send({ error: "Internal server error" });
   }
 };
 
