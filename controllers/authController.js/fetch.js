@@ -10,7 +10,6 @@ export default async function fetchUserDetails(req,res) {
         req.user = user;
         res.status(200).send(req.user);
     } catch (error) {
-        console.error('Error fetching user details:', error);
-        throw error;
+       return res.status(500).send({error: "Internal server error"})
     }
 }

@@ -24,7 +24,6 @@ export default async function authMiddleware(req, res, next) {
     req.user = user;
     next();
   } catch (error) {
-    console.log("error", error.message);
     res.status(401).send({ error: "Invalid token." }, error.message);
   }
 }
