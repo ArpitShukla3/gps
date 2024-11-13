@@ -6,7 +6,6 @@ dotenv.config();
 export default async function Signup(req, res) {
   try {
     const { name, email, password } = req.body;
-
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -22,9 +21,9 @@ export default async function Signup(req, res) {
     await user.save();
 
     // Generate a JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "2d",
-    });
+    // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    //   expiresIn: "2d",
+    // });
 
     // Set the token in a cookie
     // res.cookie("token", token, createCookieOptions);
@@ -35,7 +34,7 @@ export default async function Signup(req, res) {
         id: user._id,
         name: user.name,
         email: user.email,
-        authToken: token,
+        authToken: user._id,
       },
     });
   } catch (error) {

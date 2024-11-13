@@ -78,10 +78,10 @@ io.on("connection", (socket) => {
 function cleanup() {
   // console.log("Cleaning up resources...");
 
-  // Close the database connection
-  mongoose.connection.close(false, () => {
-    // console.log("MongoDB connection closed.");
-  });
+  // // Close the database connection
+  // mongoose.connection.close(false, () => {
+  //   // console.log("MongoDB connection closed.");
+  // });
 
   // Disconnect all connected sockets
   io.sockets.sockets.forEach((socket) => {
