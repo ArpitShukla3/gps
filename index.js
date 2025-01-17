@@ -6,7 +6,6 @@ import authRouter from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
 import { Server } from "socket.io";
 import http from "http";
-import mongoose from "mongoose";
 
 dotenv.config();
 connectDB();
